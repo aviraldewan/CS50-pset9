@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {% if info %}
+           Quoted
+    {% else %}
+           Quote
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+    {% if info %}
+        A share of {{info.name}} ({{info.symbol}}) costs {{info.price | usd }}
+    {% else %}
+        <form action="/quote" method="post">
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Symbol" type="text">
+            </div>
+            <button class="btn btn-primary" type="submit">Quote</button>
+        </form>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Buy
+{% endblock %}
+
+{% block main %}
+    {% if info %}
+        A share of {{info.name}} ({{info.symbol}}) costs {{info.price | usd }}
+    {% else %}
+        <form action="/buy" method="post">
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="symbol" placeholder="Symbol" type="text">
+            </div>
+            <div class="form-group">
+            <input class="form-control" name="shares" placeholder="Shares" type="number">
+        </div>
+            <button class="btn btn-primary" type="submit">Buy</button>
+        </form>
+    {% endif %}
+{% endblock %}

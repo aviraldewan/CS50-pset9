@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+       <table class="table table-striped">
+           <thead>
+               <tr>
+                   <th>Symbol</th>
+                   <th>Name</th>
+                   <th>Shares</th>
+                   <th>Price</th>
+                   <th>TOTAL</th>
+               </tr>
+           </thead>
+           <tbody>
+               {% for row in info %}
+               <tr>
+                   <td>{{ row["symbol"] }}</td>
+                   <td>{{ row["name"] }}</td>
+                   <td>{{ row["shares"] }}</td>
+                   <td>{{ row["price"] }}</td>
+                   <td>{{ row["total"] }}</td>
+               </tr>
+               {% endfor %}
+               <td>CASH</td>
+               <td colspan="3"></td>
+               <td>{{ cash }}</td>
+           </tbody>
+           <tfoot>
+                <td colspan="4"></td>
+                <td><strong>{{ gt }}</strong></td>
+           </tfoot>
+       </table>
+       <form action="/" method="post">
+       <div class="form-group">
+            <input class="form-control" autofocus autocomplete="off" name="m" placeholder="Amount" type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">Enter</button>
+    </form>
+    <p>Enter the amount of money to be increased.</p>
+{% endblock %}
